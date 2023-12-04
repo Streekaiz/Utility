@@ -17,9 +17,9 @@ function Library:Get(String)
     end
 end
 
-function Library:Connect(Type, Function)
-    local Connection = Type:Connect(Function); table.insert(Library.Connections, Connection)
-
+function Library:Connect(Type, Function, Name)
+    Name = Name or #Library.Connections + 1
+    local Connection = Type:Connect(Function); Library.Connections[Name] = Connection
     return Connection
 end
 
